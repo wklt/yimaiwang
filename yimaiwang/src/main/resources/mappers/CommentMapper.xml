@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.dao.CommentMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.entity.Comment" >
+    <constructor >
+      <idArg column="ec_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ec_reply" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ec_content" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ec_create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="ec_reply_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="ec_nick_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ec_id, ec_reply, ec_content, ec_create_time, ec_reply_time, ec_nick_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from easybuy_comment
+    where ec_id = #{ecId,jdbcType=INTEGER}
+  </select>
+
+  <!--查询所有留言-->
+  <select id="getAll" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from easybuy_comment
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from easybuy_comment
+    where ec_id = #{ecId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.entity.Comment" >
+    insert into easybuy_comment (ec_id, ec_reply, ec_content,
+      ec_create_time, ec_reply_time, ec_nick_name
+      )
+    values (#{ecId,jdbcType=INTEGER}, #{ecReply,jdbcType=VARCHAR}, #{ecContent,jdbcType=VARCHAR},
+      #{ecCreateTime,jdbcType=TIMESTAMP}, #{ecReplyTime,jdbcType=TIMESTAMP}, #{ecNickName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.entity.Comment" >
+    insert into easybuy_comment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ecId != null" >
+        ec_id,
+      </if>
+      <if test="ecReply != null" >
+        ec_reply,
+      </if>
+      <if test="ecContent != null" >
+        ec_content,
+      </if>
+      <if test="ecCreateTime != null" >
+        ec_create_time,
+      </if>
+      <if test="ecReplyTime != null" >
+        ec_reply_time,
+      </if>
+      <if test="ecNickName != null" >
+        ec_nick_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ecId != null" >
+        #{ecId,jdbcType=INTEGER},
+      </if>
+      <if test="ecReply != null" >
+        #{ecReply,jdbcType=VARCHAR},
+      </if>
+      <if test="ecContent != null" >
+        #{ecContent,jdbcType=VARCHAR},
+      </if>
+      <if test="ecCreateTime != null" >
+        #{ecCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ecReplyTime != null" >
+        #{ecReplyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ecNickName != null" >
+        #{ecNickName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.entity.Comment" >
+    update easybuy_comment
+    <set >
+      <if test="ecReply != null" >
+        ec_reply = #{ecReply,jdbcType=VARCHAR},
+      </if>
+      <if test="ecContent != null" >
+        ec_content = #{ecContent,jdbcType=VARCHAR},
+      </if>
+      <if test="ecCreateTime != null" >
+        ec_create_time = #{ecCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ecReplyTime != null" >
+        ec_reply_time = #{ecReplyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ecNickName != null" >
+        ec_nick_name = #{ecNickName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ec_id = #{ecId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.entity.Comment" >
+    update easybuy_comment
+    set ec_reply = #{ecReply,jdbcType=VARCHAR},
+      ec_content = #{ecContent,jdbcType=VARCHAR},
+      ec_create_time = #{ecCreateTime,jdbcType=TIMESTAMP},
+      ec_reply_time = #{ecReplyTime,jdbcType=TIMESTAMP},
+      ec_nick_name = #{ecNickName,jdbcType=VARCHAR}
+    where ec_id = #{ecId,jdbcType=INTEGER}
+  </update>
+</mapper>
