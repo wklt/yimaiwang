@@ -1,10 +1,10 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c" %>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ page isELIgnored="false"%>
+<%@ page isELIgnored="false" %>
 <%
     String path = request.getContextPath();
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -24,7 +24,8 @@
     <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
     <script type="text/javascript" src="js/uploadPreview.js"></script>
     <style type="text/css">
-        #buttom{
+        #buttom {
+            width: 1350px;
             height: 45px;
             margin-top: -8px;
             border: 1px solid skyblue;
@@ -33,9 +34,15 @@
 </head>
 
 <body>
-<div id="buttom">
+<div id="buttom" style="background-color: gray">
     <center>
-        <p><span>联系我们QQ:66666</span></p>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="font_fff">
+            <tr>
+                <td align="center">Copyright @ 2017-2023 All Rights Reserved 版权所有：艾码客教育甘敏<br/>
+                    地址：长江大学东校区小西门斜对面汉科十巷9号1楼&nbsp;&nbsp;电话：400-027-3552&nbsp;&nbsp;QQ：800101800
+                </td>
+            </tr>
+        </table>
     </center>
     <script type="text/javascript">
     </script>

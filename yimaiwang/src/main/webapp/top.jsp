@@ -86,14 +86,14 @@
 </div>
 <div id="a2">
     <ul style="margin-left: 200px">
-        <li>音乐<span>|</span></li>
-        <li>影视<span>|</span></li>
-        <li>少儿<span>|</span></li>
-        <li>动漫<span>|</span></li>
-        <li>小说<span>|</span></li>
-        <li>外语<span>|</span></li>
-        <li>数码相机<span>|</span></li>
-        <li>笔记本<span>|</span></li>
+        <li>音乐<span>&nbsp;|</span></li>
+        <li>影视<span>&nbsp;|</span></li>
+        <li>少儿<span>&nbsp;|</span></li>
+        <li>动漫<span>&nbsp;|</span></li>
+        <li>小说<span>&nbsp;|</span></li>
+        <li>外语<span>&nbsp;|</span></li>
+        <li>数码相机&nbsp;<span>|</span></li>
+        <li>笔记本&nbsp;<span>|</span></li>
         <li>Investor Relations</li>
     </ul>
 </div>

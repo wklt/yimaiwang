@@ -1,10 +1,10 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c" %>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ page isELIgnored="false"%>
+<%@ page isELIgnored="false" %>
 <%
     String path = request.getContextPath();
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -24,13 +24,13 @@
     <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
 </head>
 <frameset rows="20%,70%,10%" frameborder="no">
-    <frame src="top.jsp" noresize="noresize" />
-    <frameset cols="25%,50%,25%" frameborder="no" >
-        <frame src="left.jsp" noresize="noresize" />
-        <frame src ="central.jsp" name="right" noresize="noresize" />
-        <frame src ="right.jsp" name="central" noresize="noresize" />
+    <frame src="top.jsp" noresize="noresize"/>
+    <frameset cols="25%,40%,35%" frameborder="no">
+        <frame src="bodyleft.jsp" noresize="noresize"/>
+        <frame src="central.jsp" name="right" noresize="noresize"/>
+        <frame src="right.jsp" name="central" noresize="noresize"/>
     </frameset>
-    <frame src="down.jsp" noresize="noresize" />
+    <frame src="down.jsp" noresize="noresize"/>
 </frameset>
 <body>
 

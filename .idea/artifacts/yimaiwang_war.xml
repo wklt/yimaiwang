@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="yimaiwang:war">
+    <output-path>$PROJECT_DIR$/yimaiwang/target</output-path>
+    <root id="archive" name="helloworld.war">
+      <element id="artifact" artifact-name="yimaiwang:war exploded" />
+    </root>
+  </artifact>
+</component>
