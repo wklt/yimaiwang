@@ -28,6 +28,19 @@
     from easybuy_comment
   </select>
 
+
+  <select id="selectcommentPage" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    select
+    <include refid="Base_Column_List"/>
+    from easybuy_comment limit #{ye },8;
+  </select>
+
+
+ <!--DELETE FROM easybuy_comment WHERE ec_id=6-->
+ <delete id="deleteByPrimaryid" parameterType="java.lang.Integer">
+   DELETE FROM easybuy_comment WHERE ec_id=#{ecId,jdbcType=INTEGER}
+ </delete>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from easybuy_comment
     where ec_id = #{ecId,jdbcType=INTEGER}
@@ -111,6 +124,13 @@
       ec_create_time = #{ecCreateTime,jdbcType=TIMESTAMP},
       ec_reply_time = #{ecReplyTime,jdbcType=TIMESTAMP},
       ec_nick_name = #{ecNickName,jdbcType=VARCHAR}
+    where ec_id = #{ecId,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateByPrimaryid" parameterType="com.cn.entity.Comment" >
+    update easybuy_comment
+    set ec_reply = #{ecReply,jdbcType=VARCHAR},
+      ec_reply_time = #{ecReplyTime,jdbcType=TIMESTAMP}
     where ec_id = #{ecId,jdbcType=INTEGER}
   </update>
 </mapper>

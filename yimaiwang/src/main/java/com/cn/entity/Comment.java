@@ -88,12 +88,9 @@ public class Comment {
                 '}';
     }
 
-    public Comment(String ecReply, String ecContent, Date ecCreateTime, Date ecReplyTime, String ecNickName) {
+    public Comment(Integer ecId, String ecReply, Date ecReplyTime) {
+        this.ecId = ecId;
         this.ecReply = ecReply;
-        this.ecContent = ecContent;
-        this.ecCreateTime = ecCreateTime;
         this.ecReplyTime = ecReplyTime;
-        this.ecNickName = ecNickName;
     }
-
 }

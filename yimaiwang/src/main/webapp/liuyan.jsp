@@ -14,7 +14,7 @@
     <title></title>
     <style type="text/css">
         #ta1{
-            width: 800px;
+            width: 740px;
             border-top: 2px solid orange;
             position: relative;
             border-bottom: 1px solid gray;
@@ -63,12 +63,6 @@
                 </td>
             </tr>
             </c:forEach>
-
-            <tr style="float: right">
-                <td>
-                    分页
-                </td>
-            </tr>
         </table>
     <form action="addliu.do" method="post">
         <table id="ta2">

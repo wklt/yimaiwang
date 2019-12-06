@@ -33,12 +33,16 @@
 </head>
 
 <body>
-<div id="buttom">
+<div id="buttom" style="background-color: gray">
     <center>
-        <p><span>联系我们QQ:66666</span></p>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" class="font_fff">
+            <tr>
+                <td align="center">Copyright @ 2017-2023 All Rights Reserved 版权所有：艾码客教育王康<br/>
+                    地址：长江大学东校区小西门斜对面汉科十巷9号1楼&nbsp;&nbsp;电话：400-027-3552&nbsp;&nbsp;QQ：800101800
+                </td>
+            </tr>
+        </table>
     </center>
-    <script type="text/javascript">
-    </script>
 </div>
 </body>
 </html>

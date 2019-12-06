@@ -46,10 +46,40 @@
         }
         .a2{
             margin-left: -20px;
+            float: left;
+            padding: 0;
+            overflow: hidden;
+            position: relative;
+            height: 440px;
+        }
+        a{
+            text-decoration: none;
         }
     </style>
-</head>
 
+    <%--<script type="text/javascript">
+
+        $(function(){
+            $.ajax({
+                url:"news2.do",
+                success:function(data){
+                    //解析data,将解析出的data插入到指定地方
+                    $(data).each(
+                        function(){
+                            var div=$("<div class='a2'></div>");
+                            var ul=$("<ul></ul>");
+                            var li=$("<li><img src='img/3.png'><a href='shownews.jsp?id="+this.id+"'> "+this.title+"</a></li>");
+                            div.append(ul);
+                            ul.append(li);
+                        }
+                    );
+                }
+            });
+        })
+
+    </script>--%>
+
+</head>
 <body>
 
     <div id="div1">
@@ -57,22 +87,32 @@
             <b>新闻动态</b>
         </div>
         <div class="a2">
-            <ul>
-                <li><img src="img/3.png">功翻山倒海法国恢复得更</li>
-                <li><img src="img/3.png">规范地方会更好顺丰到付第三</li>
-                <li><img src="img/3.png">俺三个地方管道施工方</li>
-                <li><img src="img/3.png">施工方法大使馆单方事故讽德贾</li>
-                <li><img src="img/3.png">功太化股</li>
-                <li><img src="img/3.png">公司豆腐干豆腐事故事</li>
-                <li><img src="img/3.png">施工法规收到广东分公司的股到</li>
-                <li><img src="img/3.png">三个地方</li>
-            </ul>
+
+                <ul>
+                   <c:forEach items="${newsAll}" var="news">
+                    <li><img src="img/3.png"><a href="shownews.do?id=${news.id}" target="right">${news.title}</a> </li>
+                    </c:forEach>
+                </ul>
+
         </div>
     </div>
 
 
+    <script type="text/javascript">
+       setInterval(function () {t();}, 1000)
 
-<script type="text/javascript">
-</script>
+
+        function t() {
+            var he = $(".a2>ul>li").height();//找到li高
+            $(".a2>ul>li").eq(0).appendTo($(".a2>ul")); //复制第一个到最后一个
+            $(".a2>ul").animate({
+                "marginTop": "-" - he
+            }, 1000, function () {
+                $(".a2>ul").css({
+                    "marginTop": 0
+                })
+            })
+        }
+    </script>
 </body>
 </html>

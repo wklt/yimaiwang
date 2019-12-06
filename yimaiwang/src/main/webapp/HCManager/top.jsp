@@ -25,8 +25,7 @@
     <script type="text/javascript" src="js/uploadPreview.js"></script>
     <style type="text/css">
         #top{
-            height: 70px;
-            border: 1px solid skyblue;
+            height: 65px;
         }
         html{
             overflow-x: hidden;
@@ -36,9 +35,12 @@
             text-decoration: none;
         }
         #a2{
-            background-color: orangered;
+            background-color: orange;
             height: 30px;
             margin-top: -15px;
+        }
+        .zz:hover{
+            background-color:orange;
         }
     </style>
 </head>
@@ -46,31 +48,31 @@
 <body>
 <div id="top">
     <center>
-        <table cellpadding="1" cellspacing="1" border="1px solid red" style="text-align: center">
+        <table cellpadding="1" cellspacing="1" style="text-align: center">
             <tr>
-                <td width="300px" rowspan="2">易买网</td>
+                <td width="300px" rowspan="2"><span style="float: right"><img src="img/easybuy.png"></span></td>
                 <td width="550px" colspan="6"></td>
-                <td width="400px"><span style="float: right;"><a href="main.jsp" target="_parent">返回前台页面</a></span></td>
+                <td width="400px"><span style="float: right;"><a href="goshouye.do" target="_parent">返回前台页面</a></span></td>
             </tr>
             <tr>
-                <td>首页</td>
-                <td>用户</td>
-                <td>商品</td>
-                <td>订单</td>
-                <td>留言</td>
-                <td>新闻</td>
+                <td class="zz"><a href="HCManager/main.jsp" target="_parent">首页</a></td>
+                <td class="zz"><a href="userAll.do" target="right">用户</a></td>
+                <td class="zz"><a href="showgoods.do" target="right">商品</a></td>
+                <td class="zz"><a href="showeodetail.do" target="right">订单</a></td>
+                <td class="zz"><a href="liuyan2.do" target="right">留言</a></td>
+                <td class="zz"><a href="news.do" target="right">新闻</a></td>
                 <td></td>
             </tr>
         </table>
     </center>
-
-
-    <script type="text/javascript">
-    </script>
 </div>
 <div id="a2">
     <span style="float: right;margin-right: 100px">管理员**您好,今天是2019-11-25,欢迎回到管理后台。</span>
 </div>
-<span style="margin-left: 100px">您所在的位置是：<a href="#">易买网</a>>管理后台</span>
+<c:choose>
+    <c:when test="${!empty leftmessage}">
+        <span style="margin-left: 120px">您现在的位置:易买网&nbsp;>&nbsp;${leftmessage }</span>
+    </c:when>
+</c:choose>
 </body>
 </html>

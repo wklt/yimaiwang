@@ -12,6 +12,8 @@
 <head>
     <meta charset="utf-8">
     <title></title>
+    <script type="text/javascript" src="js/uploadPreview.js"></script>
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
     <style type="text/css">
         #a3{
             width: 700px;
@@ -20,66 +22,102 @@
             border-top: 2px solid orange;
         }
         .d1{
+            width: 130px;
+            height: 180px;
             float: left;
             overflow: hidden;
-            margin-right: 10px;
-            padding-left: 20px;
+            margin-left: 30px;
             margin-top: 15px;
             text-align: center;
+            font-size: 15px;
         }
         img{
             width: 130px;
             height: 130px;
         }
-        hr{
-            color: orange;
-            width: 800px;
+        #a4{
+            font-size: 13px;
+            height: 50px;
+            float: left;
+            width: 700px;
+        }
+        span{
+            float: left;
+        }
+        #ig1 {
+            position: absolute;
+            width: 250px;
+            height: 220px;
+            display: none;
+        }
+        a {
+            text-decoration: none;
         }
     </style>
 </head>
-<body onload="showFood()">
-<script type="text/javascript">
-    function Food(path,desc,price){
-        this.path=path;//图片
-        this.desc=desc;//描述
-        this.price=price;//价格
-    }
-
-    var food2=new Array();
-    food2[0]=new Food("img/百草味1.png","果脯类","46.90");
-    food2[1]=new Food("img/百草味2.png","坚果类","42.50");
-    food2[2]=new Food("img/百草味3.png","饼干类","51.00");
-    food2[3]=new Food("img/百草味4.png","糖果类","36.90");
-    food2[4]=new Food("img/百草味5.png","蜜饯类","26.50");
-    food2[5]=new Food("img/百草味6.png","干货类","38.50");
-    food2[6]=new Food("img/百草味7.png","零食类","40.00");
-    food2[7]=new Food("img/百草味8.png","糕点类","35.90");
-    function showFood(){
-        var h=document.getElementById("a3");
-        h.innerHTML="";
-        for(var i in food2){
-            var n=document.createElement("div");
-            var content="<div><img src='"+food2[i]['path']+"'/></div>";
-            content+="<div>"+food2[i]['desc']+"</div>";
-            content+="<div>￥"+food2[i]['price']+"</div>";
-            n.innerHTML=content;
-            n.className="d1";
-            h.appendChild(n);
-        }
-    }
-</script>
-
-
+<body>
 <div >
     <div id="a2">
             <img src="img/2.png" style="width: 15px; height:15px"><b>商品列表</b>
     </div>
 
-
     <div id="a3">
-
+            <img id="ig1"/>
+            <c:forEach items="${sproducts }" var="sproduct">
+                <div class="d1">
+                    <a href="details.do?id=${sproduct.id }"><img name="ig" src="upload/${sproduct.filename }"
+                                                                 class="img">
+                            ${sproduct.name }<br>
+                            ${sproduct.price }</a>
+                </div>
+            </c:forEach>
     </div>
+    <div id="a4">
+        <p>
+            <span>共&ensp;${totalPage }&nbsp;条记录&ensp;&ensp;&ensp;&ensp;&ensp;${ye }/${zonye }页&ensp;&ensp;&ensp;&ensp;</span>
 
+            <span>
+                <a href="splastye.do">上一页</a>&ensp;&ensp;
+                <a href="spnextye.do">下一页</a>&ensp;&ensp;
+                <a href="spgofinal.do">最后一页</a>
+            </span>
+        <form name="form1" action="sptiaoye.do" method="post">
+            <span style="float: right">跳转至&ensp;&ensp;<input type="text" name="ye"/>&ensp;&ensp;页&ensp;&ensp;
+            <input type="submit" value="GO"/>
+            </span>
+        </form>
+        </p>
+    </div>
 </div>
+
+<script type="text/javascript">
+    $(function () {
+        var x = 160, y = 40;
+        $("img[name]").mouseover(function (e) {
+            $("#ig1").attr("src", this.src).css({"top": (e.pageY + y) + "px", "left": (e.pageX = x) + "px"}).show();
+        });
+        $("img[name]").mouseout(function () {
+            $("#ig1").hide();
+        });
+    });
+</script>
+
+
+<c:choose>
+    <c:when test="${!empty listEproducts }">
+        <div style="width: 450px;padding: 20px;float: left;">
+            <p>浏览记录:</p>
+            <c:forEach items="${listEproducts }" var="listEproduct">
+                <div class="d1">
+                    <a href="details.do?id=${listEproduct.id }"><img name="ig"
+                                                                     src="upload/${listEproduct.filename }"
+                                                                     style="width: 80px;height: 80px;">
+                            ${listEproduct.name }
+                            ${listEproduct.price }</a>
+                </div>
+            </c:forEach>
+        </div>
+    </c:when>
+</c:choose>
 </body>
 </html>

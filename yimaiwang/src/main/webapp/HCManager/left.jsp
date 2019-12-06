@@ -1,35 +1,80 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c" %>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ page isELIgnored="false"%>
+<%@ page isELIgnored="false" %>
 <%
     String path = request.getContextPath();
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>首页左侧导航</title>
-    <link rel="stylesheet" type="text/css" href="../css/public.css" />
-    <script type="text/javascript" src="../js/jquery.min.js"></script>
-    <script type="text/javascript" src="../js/public.js"></script>
-    <head></head>
+    <base href="<%=basePath%>">
 
-<body id="bg">
-<!-- 左边节点 -->
-<div class="container">
+    <title>My JSP 'index.jsp' starting page</title>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="This is my page">
+    <!--
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    -->
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="js/uploadPreview.js"></script>
+    <style type="text/css">
+        #div1 {
+            width: 200px;
+            height: 440px;
+            margin-left:130px ;
+        }
 
-    <div class="leftsidebar_box">
+        #div2 {
+            width: 200px;
+            height: 400px;
+            float: right;
+            border: 1px solid gray;
+        }
+        dt{
+            background-color:gainsboro;
+            font-weight: bold;
+        }
+        dl{
+            margin: 5px;
+        }
+        .line {
+            background-color: orangered;
+            color: #333;
+            font-size: 14px;
+            position: relative;
+            line-height: 44px;
+            cursor: pointer;
+            border-right: 1px solid #dedede;
+            width: 200px;
+        }
+        img {
+            width: 15px;
+            height: 15px;
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+<div id="div1">
+    <div id="div2" >
+        <div class="line">&nbsp;&nbsp;<b>商品分类</b></div>
         <dl>
             <dt>
                 <b>用户管理</b>
             </dt>
             <dd>
                 <img class="coin22" src="img/2.png" />
-                <a class="cks" href="#" target="right">用户管理</a>
-                <a href="#" >新增</a>
+                <a href="userAll.do" target="right">用户管理</a>
+                <a href="HCManager/adduser.jsp" style="float: right" target="right">新增</a>
             </dd>
 
         </dl>
@@ -39,13 +84,13 @@
             </dt>
             <dd>
                 <img class="coin22" src="img/2.png" />
-                <a class="cks" href="#" target="right">分类管理</a>
-                <a href="#" >新增</a>
+                <a href="fenlei.do" target="right">分类管理</a>
+                <a href="HCManager/addfenlei.jsp" style="float: right" target="right">新增</a>
             </dd>
             <dd>
                 <img class="coin22" src="img/2.png" />
-                <a class="cks" href="#" target="right">商品管理</a>
-                <a href="#" >新增</a>
+                <a href="showgoods.do" target="right">商品管理</a>
+                <a href="addgoods.do" style="float: right" target="right">新增</a>
             </dd>
         </dl>
         <dl class="system_log">
@@ -54,7 +99,7 @@
             </dt>
             <dd>
                 <img class="coin22" src="img/2.png" />
-                <a href="#" target="right" class="cks">订单管理</a>
+                <a href="showeodetail.do" target="right">订单管理</a>
             </dd>
         </dl>
         <dl class="system_log">
@@ -63,7 +108,7 @@
             </dt>
             <dd>
                 <img class="coin22" src="img/2.png" />
-                <a href="../liuyan2.do" target="right" class="cks">留言管理</a>
+                <a href="liuyan2.do" target="right">留言管理</a>
             </dd>
         </dl>
         <dl class="system_log">
@@ -72,14 +117,25 @@
             </dt>
             <dd>
                 <img class="coin22" src="img/2.png" />
-                <a href="#" target="right" class="cks">新闻管理</a>
-                <a href="#">新增</a>
+                <a href="news.do" target="right">新闻管理</a>
+                <a href="HCManager/addnews.jsp" target="right" style="float: right; ">新增</a>
             </dd>
         </dl>
     </div>
-
 </div>
 
 
+<script type="text/javascript">
+    $(function(){
+        $("dd").hide();
+        $("dl dt").click(function(){
+            if($(this).parents("dl").children("dd").is(":hidden")){
+                $(this).parents("dl").children("dd").show();
+            }else{
+                $(this).parents("dl").children("dd").hide();
+            }
+        });
+    })
+</script>
 </body>
 </html>

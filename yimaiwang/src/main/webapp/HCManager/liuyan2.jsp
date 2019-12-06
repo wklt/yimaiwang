@@ -29,9 +29,15 @@
         .q2{
             border-bottom: 1px solid gold;
         }
+        #a4{
+            font-size: 13px;
+            height: 50px;
+            float: left;
+            width: 740px;
+            margin-left: 50px;
+        }
         span{
-            float: right;
-            margin-top: 20px;
+            float: left;
         }
     </style>
 </head>
@@ -50,22 +56,35 @@
                 <th class="q1">回复内容</th>
                 <th>操作</th>
             </tr>
-            <c:forEach items="${commentList}" var="comment">
+            <c:forEach items="${commentAll}" var="comment">
                 <tr style="height: 20px;">
                     <td class="q1" style="text-align: center">${comment.ecId}</td>
                     <td class="q1" style="text-align: center">${comment.ecNickName}</td>
                     <td class="q1">${comment.ecContent}</td>
                     <td class="q1">${comment.ecReply}</td>
                     <td class="q2" style="text-align: center">
-                        <a href="../updateliu.do">回复</a>
-                        <a href="../delliu.do?id=${comment.ecId}">删除</a>
+                        <a href="updateliu.do?ecId=${comment.ecId}" target="right">回复</a>
+                        <a href="delliu.do?ecId=${comment.ecId}" target="right">删除</a>
                     </td>
                 </tr>
             </c:forEach>
         </table>
-        <span>分页</span>
     </div>
-
+    <div id="a4">
+        <p>
+            <span>共&ensp;${totalPage }&nbsp;条记录&ensp;&ensp;&ensp;&ensp;&ensp;${ye }/${zonye }页&ensp;&ensp;&ensp;&ensp;</span>
+            <span>
+                <a href="lylastye.do">上一页</a>&ensp;&ensp;
+                <a href="lynextye.do">下一页</a>&ensp;&ensp;
+                <a href="lygofinal.do">最后一页</a>
+            </span>
+            <form name="form1" action="lytiaoye.do" method="post">
+                <span style="float: right">跳转至&ensp;&ensp;<input type="text" name="ye"/>&ensp;&ensp;页&ensp;&ensp;
+                <input type="submit" value="GO"/>
+                </span>
+            </form>
+        </p>
+    </div>
 </div>
 </body>
 </html>
